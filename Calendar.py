@@ -1,12 +1,12 @@
 T=int(input())
 days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 for i in range(T):
-    date=input()
-    slash1=date.index("/")
-    slash2=date.index("/", 3, 8)    
-    day=int(date[:slash1])
-    month=int(date[slash1+1:slash2])
-    year=int(date[slash2+1:])
+    date=input("Enter the date DD/MM/YYYY: ")
+    slas1=date.index("/")
+    slas2=date.index("/", 3, 8)    
+    day=int(date[:slas1])
+    month=int(date[slas1+1:slas2])
+    year=int(date[slas2+1:])
     # it's for counting odd days
     odddays=0
     # function for calculate odd days for decade
@@ -24,22 +24,26 @@ for i in range(T):
     if a>=300:
         # since there is more than 300 years so increase odddays value by one
         odddays +=1
-        # now i have calculate odd odddays for rest decate part
-        decade=a%100
-        # I used function because whatever i write in function it'll use in miltiple time
-        odddays=odddays+odInDecade(decade)
+        if a%100!=0:
+            # now i have calculate odd odddays for rest decate part
+            decade=a%100
+            # I used function because whatever i write in function it'll use in miltiple time
+            odddays=odddays+odInDecade(decade)
     elif a>=200:
         odddays +=3
-        decade=a%100
-        odddays=odddays+odInDecade(decade)
+        if a%100!=0:
+            decade=a%100
+            odddays=odddays+odInDecade(decade)
     elif a>=100:
         odddays +=5
-        decade=a%100
-        odddays=odddays+odInDecade(decade)
+        if a%100!=0:
+            decade=a%100
+            odddays=odddays+odInDecade(decade)
     elif y<=100:
         odddays +=5
-        decade=y
-        odddays=odddays+odInDecade(decade)
+        if a%100!=0:
+            decade=y
+            odddays=odddays+odInDecade(decade)
     else:
         odddays=odddays+odInDecade(a)
 
