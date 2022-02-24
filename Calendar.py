@@ -1,7 +1,7 @@
 T=int(input())
 days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 for i in range(T):
-    date=input("Enter the date DD/MM/YYYY: ")
+    date=input()
     slas1=date.index("/")
     slas2=date.index("/", 3, 8)    
     day=int(date[:slas1])
@@ -14,6 +14,7 @@ for i in range(T):
         lp   = decade//4
         ordy = decade-lp
         return lp*2+ordy*1
+    
     y=year-1
     # counter for decreasing month value by one
     c = month-1
@@ -51,10 +52,14 @@ for i in range(T):
     for k in range(month-1):
                     if c in [1,3,5,7,8,10]:
                         odddays+=3
-                    elif c==2:
-                        odddays+=0
                     elif c in [4,6,9,11]:
                         odddays+=2
+                    elif year%100!=0 and year%4==0:  
+                           if c==2:
+                              odddays+=1    
+                    elif year%100==0 and year%400==0:    
+                           if c==2:
+                              odddays+=1
                     c-=1
     # odd days calculating for days  
     odddays=odddays+day
